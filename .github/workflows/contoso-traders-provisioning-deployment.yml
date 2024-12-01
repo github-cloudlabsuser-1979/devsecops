@@ -14,8 +14,6 @@ on:
       ]
 
 env:
-
-
   ACR_NAME: contosotradersacr
   AKS_CLUSTER_NAME: contoso-traders-aks
   AKS_DNS_LABEL: contoso-traders-products
