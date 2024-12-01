@@ -14,7 +14,7 @@ param suffix string
 @description('A password which will be set on all SQL Azure DBs.')
 param sqlPassword string // @TODO: Obviously, we need to fix this!
 
-var resourceLocation = 'eastus'
+var resourceLocation = 'eastus2'
 
 // tenant
 param tenantId string = subscription().tenantId
