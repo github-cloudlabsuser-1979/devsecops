@@ -1,4 +1,4 @@
-name: contoso-traders-provisioning-deployment
+name: deploy-infrastructure
 
 on:
   workflow_dispatch:
