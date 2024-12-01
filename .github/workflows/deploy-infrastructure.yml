@@ -45,7 +45,6 @@ env:
 jobs:
   deploy-products-api:
     runs-on: ubuntu-latest
-    needs: provision-infrastructure
     steps:
     - name: install helm
       uses: Azure/setup-helm@v3
@@ -213,7 +212,7 @@ jobs:
      
   deploy-ui:
     runs-on: ubuntu-latest
-    needs: [provision-infrastructure, deploy-carts-api, deploy-products-api]
+    needs: [deploy-products-api]
     steps:
     - name: set REACT_APP_APIURLSHOPPINGCART
       run: echo "REACT_APP_APIURLSHOPPINGCART"="https://${{ steps.get-cartsApiEndpoint.outputs.cartsApiEndpoint }}/v1" >> $GITHUB_ENV
