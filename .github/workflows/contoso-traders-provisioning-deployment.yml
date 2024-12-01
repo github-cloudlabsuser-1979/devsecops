@@ -84,14 +84,6 @@ jobs:
         with:
           inlineScript: echo "cartsApiEndpoint"="$(az keyvault secret show --vault-name ${{ env.KV_NAME }}${{ vars.SUFFIX }} --name cartsApiEndpoint --query value -o tsv)" >> $GITHUB_OUTPUT
 
-      #
-      # section #3: deploy the products api
-      #
-      - name: install helm
-        uses: Azure/setup-helm@v3
-        id: install-helm
-        with:
-          version: v3.9.0
       - name: docker build
         run: docker build src -f ./src/ContosoTraders.Api.Products/Dockerfile -t ${{ env.ACR_NAME }}${{ vars.SUFFIX }}.azurecr.io/${{ env.PRODUCTS_ACR_REPOSITORY_NAME }}:latest -t ${{ env.ACR_NAME }}${{ vars.SUFFIX }}.azurecr.io/${{ env.PRODUCTS_ACR_REPOSITORY_NAME }}:${{ github.sha }}
       - name: docker push (to acr)
